@@ -17,10 +17,13 @@
 
     $product = new Prod($db);
 
-    $auth = $product->connect('admin200',"Tmt123456");
+    $auth = $product->connect('wkadmin',"Tmt123456");
 
     $stmt = $product->read();
     $num = $stmt->rowCount();
+
+
+//    print_r($product->get("products/36302S-Mules"));
 
 
     // check if more than 0 record found
@@ -71,9 +74,9 @@
                 )
             );
 
+
             $retour = $product->put("products/".$d->sku, $data);
 
-            print_r($retour);
             echo "<br/><br/>";
 
 

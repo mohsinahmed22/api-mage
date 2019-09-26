@@ -33,7 +33,7 @@ $curl = curl_init();
         CURLOPT_HTTPHEADER => array(
             "Accept: */*",
             "Accept-Encoding: gzip, deflate",
-            "Authorization: Bearer q9si0fat54g3x3ellq3yayjl5khga8ei",
+            "Authorization: Bearer t7ddotqcyptammcnk0w54tshwg3dcmam",
             "Cache-Control: no-cache",
             "Connection: keep-alive",
             "Content-Length: 36",

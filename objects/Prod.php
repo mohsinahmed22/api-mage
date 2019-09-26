@@ -18,7 +18,7 @@ class Prod
     public $sku;
     public $qty;
     public $item_id;
-    public $host = "http://192.168.100.7:8080/mage229";
+    public $host = "http://beta1021.walkeaze.com";
 
 
     public  $url;
@@ -229,13 +229,15 @@ class Prod
         $productData = json_encode($thedata);
         $ch = curl_init($this->url.$theurl);
 
-        $setHeaders = array('Content-Type:application/json','Authorization: Bearer '.$this->token);
 
+        $setHeaders = array('Content-Type:application/json','Authorization: Bearer '.$this->token);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $productData);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($ch, CURLOPT_HTTPHEADER, $setHeaders);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = json_decode(curl_exec($ch));
+        print_r($result);
+
         return $result;
     }
 
