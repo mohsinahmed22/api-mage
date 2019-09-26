@@ -17,6 +17,8 @@
 
     $product = new Prod($db);
 
+    $auth = $product->connect('admin200',"Tmt123456");
+
     $stmt = $product->read();
     $num = $stmt->rowCount();
 
@@ -59,12 +61,24 @@
 //            echo "http://192.168.100.7:8080/mage229/rest/default/V1/products/$d->sku/stockItems/$d->item_id";
 //            echo "{\r\n  \t\"stockItem\":{\r\n\t\t\"qty\":$d->qty\r\n\t\t\r\n\t}\r\n}" . "<br/><br/>";
 
-              $product->apicall($d->sku,$d->qty,$d->item_id);
+            $data = array(
+                "product" => array(
+                    'extension_attributes'             => array(
+                        'stockItem'             => array(
+                            'qty' => $d->qty
+                        )
+                    )
+                )
+            );
+
+            $retour = $product->put("products/".$d->sku, $data);
+
+            print_r($retour);
+            echo "<br/><br/>";
+
 
         }
 
-
-        $product->apicall("36302S-Mules",150,1);
 
 
     }else{
